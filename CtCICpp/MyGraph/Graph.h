@@ -2,29 +2,31 @@
 #define GRAPH_H
 
 #include "GraphNode.h"
-#include <vector>
-#include <memory>
 #include <unordered_map>
+#include <vector>
 
-using std::vector;
-using std::shared_ptr;
 using std::unordered_map;
+using std::vector;
+using NodePtr = shared_ptr<GraphNode>;
 
-template <typename T>
-using NodePtr = shared_ptr<GraphNode<T>>;
-
-template <class T>
 class Graph
 {
 private:
-	unordered_map<NodePtr<T>, vector<NodePtr<T>>> nodesMap;
+	vector<NodePtr> nodes;
 
 public:
 	Graph() {}
 	~Graph() {}
-	NodePtr<T> AddNode(T val);
-	void AddEdge(NodePtr<T> from, NodePtr<T> to);
-	void Print();
+
+	NodePtr AddNode(int val);
+	void AddEdge(NodePtr from, NodePtr to);
+	bool CheckReachBFS(NodePtr from, NodePtr to);
+	bool CheckReachDFS(NodePtr from, NodePtr to);
+
+	void PrintGraph();
+
+private:
+	bool CheckReachDFSInternal(NodePtr n, NodePtr target, unordered_map<NodePtr, bool>& visited);
 };
 
-#endif // !GRAPH_H
+#endif

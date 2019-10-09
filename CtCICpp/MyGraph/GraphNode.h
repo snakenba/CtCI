@@ -1,19 +1,20 @@
 #ifndef GRAPHNODE_H
 #define GRAPHNODE_H
 
-#include <vector>
 #include <memory>
-using std::vector;
-using std::shared_ptr;
+#include <vector>
 
-template <class T>
+using std::shared_ptr;
+using std::vector;
+
 class GraphNode
 {
 public:
-	T val;
-	vector<shared_ptr<GraphNode<T>>> toNodes;
+	vector<shared_ptr<GraphNode>> toNodes;
+	int val;
 
-	GraphNode(T val) : val(val) {}
+	GraphNode(int val) : val(val) {}
+	~GraphNode() {}
 };
 
-#endif // !GRAPHNODE_H
+#endif
