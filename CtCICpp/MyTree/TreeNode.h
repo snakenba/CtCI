@@ -2,17 +2,18 @@
 #define TREENODE_H
 
 #include <memory>
+
 using std::shared_ptr;
 
-template <class T>
 class TreeNode
 {
 public:
-	T val;
-	shared_ptr<TreeNode<T>> left;
-	shared_ptr<TreeNode<T>> right;
+	shared_ptr<TreeNode> left;
+	shared_ptr<TreeNode> right;
+	int val;
 
-	TreeNode(T val) : val(val), left(nullptr), right(nullptr) {}
+	TreeNode(int val) : val(val), left(nullptr), right(nullptr) {}
+	~TreeNode() {}
 };
 
 #endif

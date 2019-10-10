@@ -3,19 +3,27 @@
 
 #include <iostream>
 #include "Tree.h"
-#include "Tree.cpp"
+
+using namespace std;
 
 int main()
 {
     std::cout << "Hello World!\n";
-	Tree<int> iTree;
-	iTree.Insert(3);
-	iTree.Insert(1);
-	iTree.Insert(4);
-	iTree.Insert(5);
-	iTree.Insert(2);
+	Tree tree;
+	tree.BuildMinTree(vector<int>({ 1, 2, 3, 4, 5, 6, 7, 8 }));
 
-	iTree.PrintPreOrder();
-	iTree.PrintInOrder();
-	iTree.PrintPostOrder();
+	tree.PrintPreOrder();
+	tree.PrintInOrder();
+	tree.PrintPostOrder();
+
+	tree.PrintByLevel();
+
+	cout << "Tree balanced? " << tree.IsBalanced() << endl;
+
+	Tree tree2;
+	tree2.Insert(3);
+	tree2.Insert(1);
+	tree2.Insert(2);
+
+	cout << "Tree 2 balanced? " << tree2.IsBalanced() << endl;
 }
